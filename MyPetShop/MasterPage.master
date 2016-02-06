@@ -1,0 +1,247 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<%@ Register Src="UserControl/Navigation1.ascx" TagName="Navigation1" TagPrefix="uc1" %>
+<%@ Register Src="UserControl/Navigation2.ascx" TagName="Navigation2" TagPrefix="uc2" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <link href="img/style.css" type="text/css" rel="stylesheet" />
+    <title>无标题页</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <!--WebPart管理控件-->
+    <asp:WebPartManager ID="WebPartManager1" runat="server">
+    </asp:WebPartManager>
+    <!--AJAX管理控件-->
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <!--AJAX扩展控件-->
+    <cc1:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server" TargetControlID="txtSearch"
+        MinimumPrefixLength="1" ServiceMethod="GetStrings" ServicePath="WebService.asmx">
+    </cc1:AutoCompleteExtender>
+    <!--Header-->
+    <table width="778" border="0" cellpadding="0" cellspacing="6" class="border">
+        <tr>
+            <td width="256">
+                <asp:Image ID="Image1" runat="server" ImageUrl="~/img/logo.gif" />
+            </td>
+            <td width="504" valign="top">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tr valign="top">
+                        <td>
+                            <table width="100%" border="0" cellpadding="0" cellspacing="6" class="navDark">
+                                <tr>
+                                    <td align="center">
+                                        <asp:LinkButton ID="lnkbtnDefault" runat="server" ForeColor="White" PostBackUrl="~/Default.aspx"
+                                            CausesValidation="False">首页</asp:LinkButton>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td width="6">
+                            <img height="6" src="img/spacer.gif" width="6" alt="" />
+                        </td>
+                        <td>
+                            <table width="100%" border="0" cellpadding="0" cellspacing="6" class="navDark">
+                                <tr>
+                                    <td align="center">
+                                        <asp:LinkButton ID="lnkbtnReset" runat="server" ForeColor="White" CausesValidation="False"
+                                            OnClick="lnkbtnReset_Click" Enabled="false">个性重置</asp:LinkButton>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td width="6">
+                            <img height="6" src="img/spacer.gif" width="6" alt="" />
+                        </td>
+                        <td>
+                            <table width="100%" border="0" cellpadding="0" cellspacing="6" class="navDark">
+                                <tr>
+                                    <td align="center">
+                                        <asp:LinkButton ID="lnkbtnRegister" runat="server" ForeColor="White" PostBackUrl="~/NewUser.aspx"
+                                            CausesValidation="False">注册</asp:LinkButton>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td width="6">
+                            <img height="6" src="img/spacer.gif" width="6" alt="" />
+                        </td>
+                        <td>
+                            <table width="100%" border="0" cellpadding="0" cellspacing="6" class="navDark">
+                                <tr>
+                                    <td align="center">
+                                        <asp:LinkButton ID="lnkbtnLogin" runat="server" ForeColor="White" PostBackUrl="~/Login.aspx"
+                                            CausesValidation="False">登录</asp:LinkButton>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td width="6">
+                            <img height="6" src="img/spacer.gif" width="6" alt="" />
+                        </td>
+                        <td>
+                            <table width="100%" border="0" cellpadding="0" cellspacing="6" class="navDark">
+                                <tr>
+                                    <td align="center">
+                                        <asp:LinkButton ID="lnkbtnCart" runat="server" ForeColor="White" PostBackUrl="~/ShopCart.aspx"
+                                            CausesValidation="False">购物车</asp:LinkButton>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td width="6">
+                            <img height="6" src="img/spacer.gif" width="6" alt="" />
+                        </td>
+                        <td>
+                            <table width="100%" border="0" cellpadding="0" cellspacing="6" class="navDark">
+                                <tr>
+                                    <td align="center">
+                                        <asp:LinkButton ID="lnkbtnSiteMap" runat="server" ForeColor="White" PostBackUrl="~/Map.aspx"
+                                            CausesValidation="False">网站地图</asp:LinkButton>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <table class="navLight" cellspacing="6" cellpadding="0" width="100%" border="0">
+                    <tr>
+                        <td>
+                            <uc1:Navigation1 ID="Navigation11" runat="server" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--Navigation-->
+    <table width="778" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="border">
+        <tr>
+            <td align="center">
+                <table width="766" border="0" cellpadding="0" cellspacing="6" bgcolor="#ccccd4">
+                    <tr>
+                        <td align="left">
+                            <uc2:Navigation2 ID="Navigation21" runat="server" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--Body1-->
+    <table class="border" cellspacing="6" cellpadding="0" width="778" border="0">
+        <tr>
+            <td width="227" valign="top" bgcolor="#f2f3f7">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+            <td width="533" valign="top" bgcolor="#f2f3f7">
+                <table cellspacing="0" cellpadding="0" width="100%" border="0">
+                    <tr>
+                        <td>
+                            <table cellspacing="0" cellpadding="6" width="100%" border="0">
+                                <tr bgcolor="#cfcdaf">
+                                    <td>
+                                        <asp:Image ID="imgSearch" runat="server" ImageUrl="~/img/google_logo.gif" />
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
+                                    </td>
+                                    <td>
+                                        <asp:ImageButton ID="imgbtnSearch" runat="server" ImageUrl="~/img/searchbutton.gif"
+                                            CausesValidation="False" OnClick="imgbtnSearch_Click" />
+                                    </td>
+                                    <td>
+                                        <asp:ImageButton ID="imgbtnXml" runat="server" ImageUrl="~/img/xml.gif" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" bgcolor="#ebeadd">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#FFFFFF" height="6">
+                        </td>
+                    </tr>
+                </table>
+                <table width="100%" border="0" cellspacing="6" cellpadding="0">
+                    <tr>
+                        <td>
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--Body2-->
+    <table width="778" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="border">
+        <tr>
+            <td align="center">
+                <table width="766" border="0" cellpadding="0" cellspacing="0" bgcolor="#ccccd4">
+                    <tr>
+                        <td align="left" height="10">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table width="778" border="0" cellpadding="0" cellspacing="6" class="border">
+        <tr>
+            <td width="227" valign="top">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+            <td width="275" valign="top">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+            <td width="252" valign="top">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder5" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+    </table>
+    <table width="778" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="border">
+        <tr>
+            <td align="center">
+                <table width="766" border="0" cellpadding="0" cellspacing="0" bgcolor="#ccccd4">
+                    <tr>
+                        <td align="left" height="10">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--Footer-->
+    <table width="778" border="0" cellpadding="0" cellspacing="6" bgcolor="#FFFFFF" class="border">
+        <tr>
+            <td>
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="navLight">
+                    <tr>
+                        <td height="42">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                                <tr>
+                                    <td>
+                                        Copyright 2008 MyPetShop
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>
